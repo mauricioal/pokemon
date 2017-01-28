@@ -1,0 +1,3 @@
+.jumbotron{background-image:url(./assets/img/bg-pokemon.jpg);background-size:cover;padding-top:250px;border-bottom:10px solid #1B356A}@media (min-width:992px){.jumbotron{padding-top:300px;padding-bottom:120px;border-bottom:20px solid #1B356A}}@media (min-width:1400px){.jumbotron{padding-top:380px;padding-bottom:200px;border-bottom:50px solid #1B356A}}
+.input-group{background-color:rgba(0,0,0,.45);padding:20px 20px 0}
+.btn{display:block;margin-bottom:25px;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;border:2px solid #7EABA6;padding:0}.btn p{margin:0!important;color:#fff;padding:10px 0;font-size:18px}.btn:hover{background-color:#fff;border:2px solid #1B356A}
