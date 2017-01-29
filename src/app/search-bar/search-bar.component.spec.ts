@@ -8,6 +8,8 @@ import { SearchBarComponent } from './search-bar.component';
 describe('JumbotronComponent', () => {
   let component: SearchBarComponent;
   let fixture: ComponentFixture<SearchBarComponent>;
+  let de:      DebugElement;
+  let el:      HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,7 +24,31 @@ describe('JumbotronComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should display original placeholder', () => {
+    de = fixture.debugElement.query(By.css('.form-control'));
+    el = de.nativeElement;
+    expect(el.getAttribute('placeholder')).toEqual(component.placeholder);
+  });
+
+  it('should display a different placeholder', () => {
+    de = fixture.debugElement.query(By.css('.form-control'));
+    el = de.nativeElement;
+    component.placeholder = 'What to search for...';
+    fixture.detectChanges();
+    expect(el.getAttribute('placeholder')).toEqual('What to search for...');
+  });
+
+  it('should display original button label', () => {
+    de = fixture.debugElement.query(By.css('button'));
+    el = de.nativeElement;
+    expect(el.textContent).toEqual(component.buttonLabel);
+  });
+
+  it('should display a different button label', () => {
+    de = fixture.debugElement.query(By.css('button'));
+    el = de.nativeElement;
+    component.buttonLabel = 'Search';
+    fixture.detectChanges();
+    expect(el.textContent).toEqual('Search');
   });
 });

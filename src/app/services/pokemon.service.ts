@@ -5,12 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Pokemon } from './models/pokemon';
-import { POKEMONES } from './mock-pokemones';
+import { Pokemon } from '../models/pokemon';
 
 @Injectable()
 export class PokemonService {
-  private pokemonesUrl = 'http://pokeapi.co/api/v2/pokemon/';
+  private pokemonesUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
   constructor(private http: Http) { }
 

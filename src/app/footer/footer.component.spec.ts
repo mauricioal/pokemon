@@ -8,6 +8,8 @@ import { FooterComponent } from './footer.component';
 describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
+  let de:      DebugElement;
+  let el:      HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,9 +22,17 @@ describe('FooterComponent', () => {
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('p'));
+    el = de.nativeElement;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should display original image', () => {
+    expect(el.textContent).toContain(component.copyright);
+  });
+
+  it('should display a different image', () => {
+    component.copyright = 'My copyright';
+    fixture.detectChanges();
+    expect(el.textContent).toContain('My copyright');
   });
 });
