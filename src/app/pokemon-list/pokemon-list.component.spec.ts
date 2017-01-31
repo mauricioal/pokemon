@@ -43,7 +43,7 @@ describe('PokemonListComponent', () => {
     mockPokemonService.setResponse(mockPokemones);
     fixture.detectChanges();
     // verify service was called
-    expect(mockPokemonService.getPokemonesSpy).toHaveBeenCalledWith();
+    expect(mockPokemonService.getPokemonesSpy).toHaveBeenCalledWith(1);
     // verify data was set on component when initialized
     expect(comp.pokemones).toBe(mockPokemones);
     // verify HTML renders as expected

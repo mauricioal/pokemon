@@ -12,17 +12,25 @@ export class PokemonListComponent implements OnInit {
   pokemones: Pokemon[];
   blobsPath: string;
   blobsFormat: string;
+  page: number;
 
   constructor(private pokemonService: PokemonService) { 
     this.blobsPath = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
     this.blobsFormat = '.png';
+    this.page = 1;
+    this.pokemones = [];
   }
 
   getPokemones(): void {
-    this.pokemonService.getPokemones()
+    this.pokemonService.getPokemones(this.page)
                         .subscribe(
-                          pokemones => this.pokemones = pokemones,
+                          pokemones => this.pokemones = this.pokemones.concat(pokemones),
                           error => this.errorMessage = <any>error);
+  }
+
+  onLoadMore(): void {
+    this.page ++;
+    this.getPokemones();
   }
 
   ngOnInit(): void {

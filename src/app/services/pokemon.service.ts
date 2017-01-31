@@ -13,8 +13,9 @@ export class PokemonService {
 
   constructor(private http: Http) { }
 
-  getPokemones(): Observable<Pokemon[]> {
-    return this.http.get(this.pokemonesUrl)
+  getPokemones(page: number): Observable<Pokemon[]> {
+    let offset:number =  (page-1)*20;
+    return this.http.get(this.pokemonesUrl+"?offset="+offset)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

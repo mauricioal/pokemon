@@ -61,7 +61,7 @@ describe('Service: PokemonService', () => {
             status: 200
         });
 
-        service.getPokemones().subscribe((data: Pokemon[]) => {
+        service.getPokemones(1).subscribe((data: Pokemon[]) => {
             expect(data.length).toBe(3);
             expect(data[0].name).toBe(POKEMONES[0].name);
             expect(data[1].name).toBe(POKEMONES[1].name);
@@ -76,7 +76,7 @@ describe('Service: PokemonService', () => {
         });
         spyOn(console, 'error');
 
-        service.getPokemones().subscribe(null, () => {
+        service.getPokemones(1).subscribe(null, () => {
             expect(console.error).toHaveBeenCalledWith(`I'm afraid I've got some bad news!`);
         });
     });
